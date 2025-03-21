@@ -1,0 +1,43 @@
+.search-bar-container {
+    padding: 1em;
+
+    .search-bar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 85%;
+
+        input {
+            width: 90%;
+            height: 40px;
+            background: none;
+            border: 1px solid;
+            border-radius: 2em;
+            padding: 5px 9px 5px 35px;
+        }
+
+        .search-icon {
+            position: relative;
+            left: 30px;
+        }
+        
+        button {
+            background: none;
+            margin-left: 15px;
+            border: 1px solid;
+            border-radius: 2em;
+            height: 40px;
+            
+        }
+    }
+}
+@media (width >= 769px) {
+    .search-bar-container {
+        .search-bar{
+            max-width: 370px ;
+            input {
+                max-width: 350px;
+            }
+        }
+    }
+}
