@@ -1,0 +1,4 @@
+
+<div *ngIf="bookList?.length" style="display: flex; justify-content: center; flex-wrap: wrap;">
+    <app-book *ngFor="let book of bookList" [book]="book"></app-book>
+</div>
