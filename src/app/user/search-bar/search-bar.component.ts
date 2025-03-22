@@ -21,12 +21,12 @@ import { BookService } from '../../shared/books/book.service';
 export class SearchBarComponent {
   searchQuery = new FormControl('');
   query: string = '';
-  constructor(private bookServise: BookService) {}
+  constructor(private bookService: BookService) {}
 
   onSearch() {
+    console.log("click", this.searchQuery.value);
     if(this.searchQuery.value) {
-      this.query = this.searchQuery.value;
-      this.bookServise.getBookList(this.query);
+      this.bookService.getBookList(this.searchQuery.value);
     }
   }
 }

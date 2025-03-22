@@ -16,7 +16,10 @@ export class BookListComponent {
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.bookList = this.bookService.getBookList("test");
+    // Subscribe to the bookList$ observable to get the latest book data
+    this.bookService.bookList$.subscribe((books) => {
+      this.bookList = books;
+    });
   }
 
 }
