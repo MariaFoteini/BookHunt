@@ -1,19 +1,24 @@
 
 <mat-card [id]="book.id" class="book-card" appearance="outlined" *ngIf="book">
-    <img mat-card-image class="book-cover" [src]="book.image || 'path/to/default-image.png'" alt="Book cover"/>
+    <div class="img-container"></div><img mat-card-image class="book-cover" [src]="book.image || 'path/to/default-image.png'" alt="Book cover"/>
     <div class="content-container">
-        <mat-card-header>
-        <mat-card-title>{{ book.title || 'No Title Available' }}</mat-card-title>
-        <mat-card-subtitle *ngIf="book.authors?.length">
-            <span *ngFor="let author of book.authors">{{ author }}</span>
-        </mat-card-subtitle>
+        <mat-card-header class="headers">
+            <div class="title fw-semibold">
+                <h4>{{ book.title | slice: 0: 80}}<span *ngIf="book.title.length > 80">...</span></h4>
+            </div>
+            <div>
+                <span class="fw-medium">{{ book.authors }}</span>
+            </div>
         </mat-card-header>
         <mat-card-content class="content">
-        <div class="labels" *ngIf="book.rating">
-            Rating: {{ book.rating }}
+        <div class="labels " *ngIf="book.pageCount">
+            <span class="fw-ligher fs-8">Pages: </span><span class="fw-medium">{{ book.pageCount }}</span>
         </div>
-        <div class="keywords" *ngIf="book.categories?.length">
-            <span class="keyword" *ngFor="let category of book.categories">{{ category }} </span>
+        <div class="labels" *ngIf="book.publishedDate">
+            <span class="fw-ligher fs-8">Published Date: </span><span class="fw-medium">{{ book.publishedDate }}</span> 
+        </div>
+        <div class="keywords fw-medium" *ngIf="book.categories">
+            <span class="keyword">{{ book.categories }} </span>
         </div>
         </mat-card-content>
     </div>

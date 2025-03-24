@@ -29,14 +29,17 @@ export class BookService {
       params: params,
     }).pipe(
       map((response) => {
+        console.log("response: ", response);
         // Map the response to the Book[] type
         return response.items.map((item: any) => ({
           id: item.id,
           title: item.volumeInfo?.title || 'No Title', // Provide a default value
-          author: item.volumeInfo?.authors?.join(', ') || 'Unknown Author', // Join authors and provide a default value
+          authors: item.volumeInfo?.authors.join(', ') || 'Unknown Author', // Join authors and provide a default value
           image: item.volumeInfo?.imageLinks?.thumbnail || 'path/to/default-image.png', // Provide a default image
-          categories: item.volumeInfo?.categories || [], // Provide a default empty array
-          rating: item.volumeInfo?.rating || 0, // Default to 0 if rating is missing
+          categories: item.volumeInfo?.categories?.join(', ') || 'Unknown Category', // Provide a default empty array
+          pageCount: item.volumeInfo?.pageCount || 0, // Default to 0 if rating is missing
+          publishedDate: item.volumeInfo?.publishedDate || 0, // Default to 0 if rating is missing
+          textSnippet: item.searchInfo?.textSnippet || 0, // Default to 0 if rating is missing
         }));
       })
     ).subscribe({

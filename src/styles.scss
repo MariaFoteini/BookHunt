@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+/* || GENERAL STYLES */
+@mixin light-theme {
+    --background-primary: #fff;
+    --text-primary: #4E4E4E;
+}
+
+@mixin dark-theme {
+    --background-primary: #101010;
+    --text-primary: #CDCDCD;
+}
+
+.light {
+    @include light-theme;
+}
+  
+.dark {
+    @include dark-theme;
+}
+html {
+    padding: 0 1em;
+}
+body,
+:root {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    font-family:consolas;
+    font-size: 0.9em;
+}
+h4 {
+    font-size: 1.2em;
+}
+.fs-8 {
+    font-size: 0.9em;
+}
+
+// OS Default.
+:root:not(.light):not(.dark) {
+    @media (prefers-color-scheme: light) {
+      @include light-theme;
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      @include dark-theme;
+    }
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

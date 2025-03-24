@@ -2,49 +2,59 @@
 .book-card {
     margin: 10px;
 
-    img.book-cover {
-        object-fit: cover;
+    .headers {
+        display: flex;
+        flex-direction:column;
     }
 
     .content{
         padding-top: 6px;
 
-        .keywords {
-            padding: 6px 0  0 0;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
+        .labels {
+            padding: 3px 0;
         }
 
-        span.keyword {
-            margin: 2px 4px 2px 0;
-            padding: 2px 6px;
-            border: 1px solid;
-            border-radius: 1em;
+        .keywords {
+            padding: 6px 0  0 0;
         }
     }
 }
 
 @media (width >= 768px) {
     .book-card {
-        max-width: 260px;
+        width: 220px;
+        height: 370px;
+
+        .headers {
+            height: 125px;
+        }
 
         img.book-cover {
-            height: 275px;
+            height: 147px;
+            object-fit: contain;
+            padding-top: 1em;
         }
     }
 }
   
 @media (width <= 769px) {   
     .book-card {
-        max-width: 100%;
-        height: fit-content;
+        width: 90vw;
+        height: 170px;
         margin: 10px;
         display: flex;
         flex-direction: row;
 
         img.book-cover {
+            object-fit: cover;
+            height: 170px;
+        }
+
+        img.book-cover {
             border-radius: var(--mat-sys-corner-medium) 0 0 var(--mat-sys-corner-medium);
+            background-color: #4d4d4d;
+            height: 170px;
+            width: 112px;
         }
 
         .content-container{

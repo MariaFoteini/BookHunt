@@ -21,6 +21,7 @@ import { BookService } from '../../shared/books/book.service';
 export class SearchBarComponent {
   searchQuery = new FormControl('');
   query: string = '';
+  
   constructor(private bookService: BookService) {}
 
   onSearch() {
