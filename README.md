@@ -42,7 +42,7 @@ BookHunt is a simple Angular application that allows users to search for books u
      export const environment = {
         production: false,
         apiUrl: 'https://www.googleapis.com/books/v1/volumes',
-        apiKey: 'your-development-api-key', // Replace with your develomenent API key
+        apiKey: 'your-development-api-key', // Replace with your development API key
       };
      ```
 

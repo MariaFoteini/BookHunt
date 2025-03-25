@@ -29,7 +29,6 @@ export class BookService {
       params: params,
     }).pipe(
       map((response) => {
-        console.log("response: ", response);
         // Map the response to the Book[] type
         return response.items.map((item: any) => ({
           id: item.id,

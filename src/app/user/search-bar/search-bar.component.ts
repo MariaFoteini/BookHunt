@@ -25,7 +25,6 @@ export class SearchBarComponent {
   constructor(private bookService: BookService) {}
 
   onSearch() {
-    console.log("click", this.searchQuery.value);
     if(this.searchQuery.value) {
       this.bookService.getBookList(this.searchQuery.value);
     }
