@@ -34,7 +34,6 @@ export class BookService {
     }).pipe(
       map((response) => {
         // Map the response to the Book[] type
-        console.log("response:", response);
         return response.items.map((item: any) => ({
           id: item.id,
           title: item.volumeInfo?.title || 'No Title', // Provide a default value
