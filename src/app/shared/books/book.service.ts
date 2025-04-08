@@ -18,10 +18,14 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   // Fetch books from the API and update the BehaviorSubject
-  public getBookList(query: string): void {
+  public getBooks(query: string, projection?: string): void {
+    if (projection == undefined) {
+      projection = "full";
+    }
     const params = new HttpParams()
       .set('key', this.key)
-      .set('q', query);
+      .set('q', query)
+      .set('projection', projection);
 
     this.http.get<any>(this.apiUrl, {
       responseType: 'json',
@@ -30,15 +34,19 @@ export class BookService {
     }).pipe(
       map((response) => {
         // Map the response to the Book[] type
+        console.log("response:", response);
         return response.items.map((item: any) => ({
           id: item.id,
           title: item.volumeInfo?.title || 'No Title', // Provide a default value
-          authors: item.volumeInfo?.authors.join(', ') || 'Unknown Author', // Join authors and provide a default value
+          authors: item.volumeInfo?.authors, // Join authors and provide a default value
           image: item.volumeInfo?.imageLinks?.thumbnail || 'path/to/default-image.png', // Provide a default image
-          categories: item.volumeInfo?.categories?.join(', ') || 'Unknown Category', // Provide a default empty array
+          categories: item.volumeInfo?.categories, // Provide a default empty array
           pageCount: item.volumeInfo?.pageCount || 0, // Default to 0 if rating is missing
           publishedDate: item.volumeInfo?.publishedDate || 0, // Default to 0 if rating is missing
           textSnippet: item.searchInfo?.textSnippet || 0, // Default to 0 if rating is missing
+          description: item.volumeInfo.description,
+          language: item.volumeInfo.language,
+          previewLink: item.volumeInfo.previewLink
         }));
       })
     ).subscribe({
@@ -50,4 +58,5 @@ export class BookService {
       },
     });
   }
+
 }

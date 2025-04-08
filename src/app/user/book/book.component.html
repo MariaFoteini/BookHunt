@@ -1,25 +1,34 @@
 
-<mat-card [id]="book.id" class="book-card" appearance="outlined" *ngIf="book">
-    <div class="img-container"></div><img mat-card-image class="book-cover" [src]="book.image || 'path/to/default-image.png'" alt="Book cover"/>
+<mat-card   [id]="book.id" class="book-card" appearance="outlined" *ngIf="book"
+            href="book/[book.id]" tabindex="0" role="button" attr.aria-label="View details of {{book.title}}" 
+            routerLink="/book/{{book.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+            (keyup.enter)="routerLinkKeyUpTrigger(book.id)">
+
+    <div class="img-container">
+        <img mat-card-image class="book-cover" [src]="book.image || 'path/to/default-image.png'" alt="Book cover"/>
+    </div>
     <div class="content-container">
         <mat-card-header class="headers">
             <div class="title fw-semibold">
                 <h4>{{ book.title | slice: 0: 80}}<span *ngIf="book.title.length > 80">...</span></h4>
             </div>
             <div>
+                <span class="fw-ligher fs-8">Created by: </span>
                 <span class="fw-medium">{{ book.authors }}</span>
             </div>
         </mat-card-header>
         <mat-card-content class="content">
-        <div class="labels " *ngIf="book.pageCount">
-            <span class="fw-ligher fs-8">Pages: </span><span class="fw-medium">{{ book.pageCount }}</span>
-        </div>
-        <div class="labels" *ngIf="book.publishedDate">
-            <span class="fw-ligher fs-8">Published Date: </span><span class="fw-medium">{{ book.publishedDate }}</span> 
-        </div>
-        <div class="keywords fw-medium" *ngIf="book.categories">
-            <span class="keyword">{{ book.categories }} </span>
-        </div>
+            <div class="labels " *ngIf="book.pageCount">
+                <span class="fw-ligher fs-8">Pages: </span>
+                <span class="fw-medium">{{ book.pageCount }}</span>
+            </div>
+            <div class="labels" *ngIf="book.publishedDate">
+                <span class="fw-ligher fs-8">Published Date: </span>
+                <span class="fw-medium">{{ book.publishedDate }}</span> 
+            </div>
+            <div class="keywords fw-medium" *ngIf="book.categories">
+                <span class="keyword">{{ book.categories }} </span>
+            </div>
         </mat-card-content>
     </div>
 </mat-card>

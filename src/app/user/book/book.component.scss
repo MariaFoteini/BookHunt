@@ -19,20 +19,28 @@
         }
     }
 }
+.book-card:hover,
+.book-card:focus-visible {
+    box-shadow: 2px 4px 4px 4px var(--mat-sys-primary-container);
+}
 
 @media (width >= 768px) {
     .book-card {
         width: 220px;
-        height: 370px;
+        height: 385px;
 
         .headers {
             height: 125px;
         }
+        .img-container {
+            display: flex;
+            justify-content: center;
 
-        img.book-cover {
-            height: 147px;
-            object-fit: contain;
-            padding-top: 1em;
+            img.book-cover {
+                height: 147px;
+                object-fit: contain;
+                padding-top: 1em;
+            }
         }
     }
 }
