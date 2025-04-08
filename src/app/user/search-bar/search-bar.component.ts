@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormControl } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookService } from '../../shared/books/book.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -20,14 +21,25 @@ import { BookService } from '../../shared/books/book.service';
 })
 export class SearchBarComponent {
   searchQuery = new FormControl('');
+  private route = inject(ActivatedRoute);
   query: string = '';
   
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private router: Router) {}
 
   onSearch() {
     console.log("click", this.query);
     if(this.searchQuery.value) {
+      this.router.navigate(['search', this.searchQuery.value]);
       this.bookService.getBooks(this.searchQuery.value);
     }
+  }
+
+  ngOnInit() {
+    console.log("page on init", this.route.snapshot.paramMap.get('q'));
+    this.query = this.route.snapshot.paramMap.get('q') || '';
+    if(this.route.snapshot.paramMap.get('q')) {
+      console.log('search by url', this.query);
+      this.bookService.getBooks(this.query);
+    } 
   }
 }

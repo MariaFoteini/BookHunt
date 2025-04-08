@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './user/navbar/navbar.component';
 
 @Component({
@@ -8,8 +8,6 @@ import { NavbarComponent } from './user/navbar/navbar.component';
     RouterOutlet,
     NavbarComponent,
     RouterOutlet, 
-    RouterLink, 
-    RouterLinkActive,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
