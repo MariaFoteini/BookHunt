@@ -1,1 +1,48 @@
-<p>book-detail works!</p>
+
+<div [id]="book.id" class="book-container container" appearance="outlined" *ngIf="book">
+    <div class="row pt-4 pb-4 bb-2">
+        <div class="col-md-6 col-sm-12 pb-4 ">
+            <div class="img-container">
+                <img div-image class="book-cover" [src]="book.image || 'path/to/default-image.png'" alt="Book cover"/>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="headers-container">
+                <div class="headers pb-4">
+                    <div class="title fw-semibold">
+                        <h1>{{ book.title }}</h1>
+                    </div>
+                    <div>
+                        <span class="fw-ligher fs-8">Created by: </span>
+                        <h3 class="fw-medium">{{ book.authors }}</h3>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="pb-2" *ngIf="book.pageCount">
+                        <span class="fw-ligher fs-8">Pages: </span>
+                        <span class="fw-medium">{{ book.pageCount }}</span>
+                    </div>
+                    <div class="pb-2" *ngIf="book.publishedDate">
+                        <span class="fw-ligher fs-8">Published Date: </span>
+                        <span class="fw-medium">{{ book.publishedDate }}</span> 
+                    </div>
+                    <div class="pb-4 fw-medium" *ngIf="book.categories">
+                        <mat-chip class="keyword">{{ book.categories }} </mat-chip>
+                    </div>
+                    <div class="pb-4 fw-light" *ngIf="book.textSnippet">
+                        <p class="keyword">{{ book.textSnippet | decodeHtml }}</p>
+                    </div>
+                    <div>
+                        <a mat-flat-button href="{{ book.previewLink }}" target="_blank" rel="noopener noreferrer" >Read Sample (opens new window)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="" *ngIf="book.textSnippet">
+        <div>{{ book.textSnippet }}</div>
+    </div> -->
+    <div class="row pb-4 bb-2" *ngIf="book.description">
+        <div class="description">{{ book.description }}</div>
+    </div>
+</div>

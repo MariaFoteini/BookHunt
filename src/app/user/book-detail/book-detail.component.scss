@@ -1,0 +1,29 @@
+
+.bb-2 {
+    border-bottom: 2px solid var(--bs-primary-border-subtle);
+}
+
+@media (width >= 769px) {
+
+    img.book-cover {
+        height: 70vh;
+        max-width: 40vw;
+        object-fit: contain;
+    }
+
+
+}
+  
+@media (width <= 768px) {
+    .img-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    img.book-cover {
+        height: 40vh;
+        max-width: 90vw;
+        object-fit: contain;
+    }
+
+}
