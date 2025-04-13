@@ -24,7 +24,7 @@
     box-shadow: 2px 4px 4px 4px var(--mat-sys-primary-container);
 }
 
-@media (width >= 768px) {
+@media (width >= 769px) {
     .book-card {
         width: 220px;
         height: 385px;
@@ -45,7 +45,7 @@
     }
 }
   
-@media (width <= 769px) {   
+@media (width <= 768px) {   
     .book-card {
         width: 90vw;
         height: 170px;
