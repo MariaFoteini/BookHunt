@@ -9,10 +9,10 @@
     </div>
     <div class="content-container">
         <mat-card-header class="headers">
-            <div class="title fw-semibold">
+            <div class="title fw-semibold" *ngIf="book.title">
                 <h4>{{ book.title | slice: 0: 80}}<span *ngIf="book.title.length > 80">...</span></h4>
             </div>
-            <div>
+            <div *ngIf="book.authors">
                 <span class="fw-ligher fs-8">Created by: </span>
                 <span class="fw-medium">{{ book.authors }}</span>
             </div>
@@ -26,8 +26,10 @@
                 <span class="fw-ligher fs-8">Published Date: </span>
                 <span class="fw-medium">{{ book.publishedDate }}</span> 
             </div>
-            <div class="keywords fw-medium" *ngIf="book.categories">
-                <span class="keyword">{{ book.categories }} </span>
+            <div *ngIf="book.categories" >
+                <div class="keywords fw-medium" aria-label="Genres" *ngFor="let category of book.categories">
+                    <mat-chip>{{ category }}</mat-chip>
+                </div>
             </div>
         </mat-card-content>
     </div>

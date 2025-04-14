@@ -16,9 +16,6 @@
 .dark {
     @include dark-theme;
 }
-html {
-    padding: 0 1em;
-}
 body,
 :root {
     background-color: var(--background-primary);

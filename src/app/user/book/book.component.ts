@@ -1,14 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { Book } from '../../models/book.models';
-import { NgIf, SlicePipe } from '@angular/common';
+import { NgIf, NgFor, SlicePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book',
   imports: [
     MatCardModule,
+    MatChipsModule,
     NgIf,
+    NgFor,
     SlicePipe,
     RouterLink,
   ],

@@ -1,7 +1,5 @@
 
 .book-card {
-    margin: 10px;
-
     .headers {
         display: flex;
         flex-direction:column;
@@ -24,9 +22,8 @@
     box-shadow: 2px 4px 4px 4px var(--mat-sys-primary-container);
 }
 
-@media (width >= 769px) {
+@media (width >= 768px) {
     .book-card {
-        width: 220px;
         height: 385px;
 
         .headers {
@@ -45,9 +42,8 @@
     }
 }
   
-@media (width <= 768px) {   
+@media (width < 768px) {   
     .book-card {
-        width: 90vw;
         height: 170px;
         margin: 10px;
         display: flex;
@@ -62,7 +58,6 @@
             border-radius: var(--mat-sys-corner-medium) 0 0 var(--mat-sys-corner-medium);
             background-color: #4d4d4d;
             height: 170px;
-            width: 112px;
         }
 
         .content-container{
