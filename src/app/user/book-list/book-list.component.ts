@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../shared/books/book.service';
 import { BookComponent } from '../book/book.component';
-import { Book } from '../../models/book.models';
+import { Books } from '../../models/books.models';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrl: './book-list.component.scss'
 })
 export class BookListComponent {
-  bookList?: Book[] = [];
+  bookList?: Books[] = [];
 
   constructor(private bookService: BookService) {}
 
