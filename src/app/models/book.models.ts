@@ -1,13 +1,29 @@
+
 export interface Book {
     id: string;
-    title: string;
-    image: string[];
-    authors: string[];
-    categories: string[];
-    publishedDate: string;
-    textSnippet: string;
-    description: string;
     language: string;
+    title: string;
+    subtitle: string;
+    authors: string[];
+    publisher: string;
+    images: bookImages;
+    categories: string[];
+    description: string;
+    textSnippet: string;
+    publishedDate: string;
     pageCount: number;
     previewLink: string;
+    buyLink: string;
+    retailPrice: number;
+    currencyCode: string;
+
 };
+
+export interface bookImages {
+    small: string,
+    medium?: string,
+    large?: string,
+    extraLarge?: string,
+    thumbnail?: string,
+}
+
