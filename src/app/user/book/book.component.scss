@@ -44,20 +44,17 @@
   
 @media (width < 768px) {   
     .book-card {
-        height: 170px;
+        min-height: fit-content;
         margin: 10px;
         display: flex;
         flex-direction: row;
 
         img.book-cover {
             object-fit: cover;
-            height: 170px;
-        }
-
-        img.book-cover {
             border-radius: var(--mat-sys-corner-medium) 0 0 var(--mat-sys-corner-medium);
             background-color: #4d4d4d;
-            height: 170px;
+            height: 100%;
+            width: 125px;
         }
 
         .content-container{
