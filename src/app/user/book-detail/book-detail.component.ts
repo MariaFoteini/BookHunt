@@ -4,8 +4,9 @@ import { NgIf } from '@angular/common';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { DecodeHtmlPipe } from '../../shared/pipes/decode-html.pipe';
+import { CurrencyPipe } from '@angular/common';
 import { BookService } from '../../shared/books/book.service';
-import { Book } from '../../models/book.models';
+import { Book, bookImages } from '../../models/book.models';
 
 @Component({
   selector: 'app-book-detail',
@@ -14,6 +15,7 @@ import { Book } from '../../models/book.models';
     MatChipsModule,
     MatButtonModule,
     DecodeHtmlPipe,
+    CurrencyPipe,
   ],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.scss'
@@ -21,11 +23,19 @@ import { Book } from '../../models/book.models';
 export class BookDetailComponent {
   bookId: string = '';
   private route = inject(ActivatedRoute);
-  bookList: Book[] = [];
-  @Input() book: Book = {
+
+  private images: bookImages = {
+    small: '',
+    medium: '',
+    large: '',
+    extraLarge: '',
+    thumbnail: '',
+  };
+
+  book: Book =  {
     id: '',
     title: '',
-    image: [],
+    images: this.images,
     authors: [],
     categories: [],
     pageCount: 0,
@@ -33,29 +43,44 @@ export class BookDetailComponent {
     textSnippet: '',
     description: '',
     language: '',
-    previewLink: ''
+    previewLink: '',
+    subtitle: '',
+    publisher: '',
+    buyLink: '',
+    retailPrice: 0,
+    currencyCode: ''
+  };
+
+  @Input() bookObj: Book = {
+    id: '',
+    title: '',
+    images: this.images,
+    authors: [],
+    categories: [],
+    pageCount: 0,
+    publishedDate: '',
+    textSnippet: '',
+    description: '',
+    language: '',
+    previewLink: '',
+    subtitle: '',
+    publisher: '',
+    buyLink: '',
+    retailPrice: 0,
+    currencyCode: ''
   }
 
   constructor(private bookService: BookService){}
 
   ngOnInit() {
+    console.log("object" , this.book);
     this.bookId = this.route.snapshot.paramMap.get('id') ?? '-1';
 
-    this.bookService.bookList$.subscribe((books) => {
-      this.bookList = books;
+    this.bookService.book$.subscribe(([bookObj]) => {
+      this.book = bookObj;
+      console.log("book details", this.book);
     });
 
-    this.bookService.getBooks(this.bookId);
-
-    console.log("books", this.bookList.length);
-    for (let i = 0; i < this.bookList.length; i++) {
-      console.log("book item", this.bookList[i]);
-      if(this.bookList[i].id === this.bookId) {
-        console.log("found the book", this.bookList[i].id);
-        this.book = this.bookList[i];
-        break;
-      }
-    }
-
+    this.bookService.getBookById(this.bookId);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { Book } from '../../models/book.models';
+import { Books } from '../../models/books.models';
 import { NgIf, NgFor, SlicePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
@@ -19,10 +19,10 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './book.component.scss'
 })
 export class BookComponent {
-  bookList?: Book[] = [];
+  bookList?: Books[] = [];
 
   response:any;  
-  @Input() book: Book = {
+  @Input() book: Books = {
     id: '',
     title: '',
     image: [],
@@ -30,10 +30,7 @@ export class BookComponent {
     categories: [],
     pageCount: 0,
     publishedDate: '',
-    textSnippet: '',
-    description: '',
     language: '',
-    previewLink: ''
   }
 
   constructor(private router: Router) {}
