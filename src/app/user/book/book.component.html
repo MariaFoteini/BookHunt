@@ -1,7 +1,7 @@
 
 <mat-card   [id]="book.id" class="book-card" appearance="outlined" *ngIf="book"
-            href="book/[book.id]" tabindex="0" role="button" attr.aria-label="View details of {{book.title}}" 
-            routerLink="/book/{{book.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+            href="books/[book.id]" tabindex="0" role="button" attr.aria-label="View details of {{book.title}}" 
+            routerLink="/books/{{book.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
             (keyup.enter)="routerLinkKeyUpTrigger(book.id)">
 
     <div class="img-container">
