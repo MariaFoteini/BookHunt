@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormControl } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BookService } from '../../shared/books/book.service';
+import { BookService } from '../../shared/services/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

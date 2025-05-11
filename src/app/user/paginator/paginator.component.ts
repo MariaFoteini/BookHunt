@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
-import { BookService } from '../../shared/books/book.service';
+import { BookService } from '../../shared/services/book.service';
 import { Pagination } from '../../models/pagination.model';
 import { ActivatedRoute, Router } from '@angular/router';
 

@@ -5,7 +5,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { DecodeHtmlPipe } from '../../shared/pipes/decode-html.pipe';
 import { CurrencyPipe } from '@angular/common';
-import { BookService } from '../../shared/books/book.service';
+import { BookService } from '../../shared/services/book.service';
 import { Book, bookImages } from '../../models/book.models';
 
 @Component({

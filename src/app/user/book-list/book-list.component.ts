@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BookService } from '../../shared/books/book.service';
+import { BookService } from '../../shared/services/book.service';
 import { BookComponent } from '../book/book.component';
 import { Books } from '../../models/books.models';
 import { NgFor, NgIf } from '@angular/common';
