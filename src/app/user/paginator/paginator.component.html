@@ -1,0 +1,9 @@
+<div class="container">
+    <mat-paginator 
+        [length]="pagination.length" 
+        [pageSizeOptions]="pagination.pageOptions" 
+        (page)="handlePageEvent($event)"
+        aria-label="Select page"
+        class="border-top border-primary-subtle"
+    ></mat-paginator>
+</div>
