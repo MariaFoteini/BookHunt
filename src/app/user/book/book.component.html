@@ -2,19 +2,20 @@
 <mat-card   [id]="book.id" class="book-card" appearance="outlined" *ngIf="book"
             href="books/[book.id]" tabindex="0" role="button" attr.aria-label="View details of {{book.title}}" 
             routerLink="/books/{{book.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
-            (keyup.enter)="routerLinkKeyUpTrigger(book.id)">
+            (keyup.enter)="routerLinkKeyUpTrigger(book.id)"
+            itemprop="itemListElement" itemscope itemtype="https://schema.org/Book">
 
-    <div class="img-container">
+    <div class="img-container" itemprop="image">
         <img mat-card-image class="book-cover" [src]="book.image || 'path/to/default-image.png'" alt="Book cover"/>
     </div>
     <div class="content-container">
         <mat-card-header class="headers">
             <div class="title fw-semibold" *ngIf="book.title">
-                <h4>{{ book.title | slice: 0: 80}}<span *ngIf="book.title.length > 80">...</span></h4>
+                <h4 itemprop="name">{{ book.title | slice: 0: 80}}<span *ngIf="book.title.length > 80">...</span></h4>
             </div>
             <div *ngIf="book.authors">
                 <span class="fw-ligher fs-8">Created by: </span>
-                <span class="fw-medium">{{ book.authors }}</span>
+                <span class="fw-medium" itemprop="author" itemscope itemtype="https://schema.org/Person">{{ book.authors }}</span>
             </div>
         </mat-card-header>
         <mat-card-content class="content">
@@ -24,10 +25,10 @@
             </div>
             <div class="labels" *ngIf="book.publishedDate">
                 <span class="fw-ligher fs-8">Published Date: </span>
-                <span class="fw-medium">{{ book.publishedDate }}</span> 
+                <span class="fw-medium" itemprop="datePublished">{{ book.publishedDate }}</span> 
             </div>
             <div *ngIf="book.categories" >
-                <div class="keywords fw-medium" aria-label="Genres" *ngFor="let category of book.categories">
+                <div class="keywords fw-medium" aria-label="Genres" itemprop="genre" *ngFor="let category of book.categories">
                     <mat-chip>{{ category }}</mat-chip>
                 </div>
             </div>

@@ -1,10 +1,11 @@
 
-<div [id]="book.id" class="book-container container pb-4" appearance="outlined" *ngIf="book">
+<div [id]="book.id" class="book-container container pb-4" appearance="outlined" *ngIf="book"  
+    itemscope itemtype="https://schema.org/Book">
     <div class="row pt-4">
         <div class="col-md-6 col-sm-12 pb-4 ">
             <div class="img-container pb-1">
                 <!-- <img  [src]="book.images || 'path/to/default-image.png'" /> -->
-                <picture>
+                <picture itemprop="thumbnail">
                     <source media="(min-width:1200px)" srcset="{{ book.images.large }}">
                     <source media="(min-width:768px)" srcset="{{ book.images.medium }}">
                     <source media="(max-width:768px)" srcset="{{ book.images.small }}">
@@ -16,12 +17,12 @@
             <div class="headers-container">
                 <div class="headers pb-4">
                     <div class="title fw-semibold">
-                        <h1>{{ book.title }}</h1>
+                        <h1 itemprop="name">{{ book.title }}</h1>
                     </div>
-                    <div>
+                    <div itemprop="author" itemscope itemtype="https://schema.org/Person">
                         <span class="fw-ligher fs-8">Created by: </span>
                         <br>
-                        <h3 class="fw-normal">{{ book.authors }}</h3>
+                        <h3 class="fw-normal" itemprop="givenName">{{ book.authors }}</h3>
                     </div>
                 </div>
                 <div class="content">
@@ -31,7 +32,7 @@
                     </div>
                     <div class="pb-2" *ngIf="book.publishedDate">
                         <span class="fw-ligher fs-8">Published Date: </span>
-                        <span class="fw-medium">{{ book.publishedDate }}</span> 
+                        <span class="fw-medium" itemprop="datePublished">{{ book.publishedDate }}</span> 
                     </div>
                     <div class="pb-4 fw-light" *ngIf="book.textSnippet">
                         <p class="keyword">{{ book.textSnippet }}</p>
@@ -44,13 +45,13 @@
             </div>
         </div>
     </div>
-    <div class="row p-4 mb-4 border border-primary-subtle rounded-4" *ngIf="book.description">
+    <div class="row p-4 mb-4 border border-primary-subtle rounded-4" *ngIf="book.description" itemprop="text">
         {{ book.description | decodeHtml }}
     </div>
     <div class="row fw-medium" *ngIf="book.categories">
         <strong>Related Categories</strong>
         @for (category of book.categories; track null) {
-            <p class="keyword mb-1 fs-8">{{ category }}</p>
+            <p class="keyword mb-1 fs-8" itemprop="keywords">{{ category }}</p>
         }
     </div>
 </div>
