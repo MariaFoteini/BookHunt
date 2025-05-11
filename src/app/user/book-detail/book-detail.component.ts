@@ -1,7 +1,7 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { DecodeHtmlPipe } from '../../shared/pipes/decode-html.pipe';
 import { CurrencyPipe } from '@angular/common';
@@ -50,25 +50,6 @@ export class BookDetailComponent {
     retailPrice: 0,
     currencyCode: ''
   };
-
-  @Input() bookObj: Book = {
-    id: '',
-    title: '',
-    images: this.images,
-    authors: [],
-    categories: [],
-    pageCount: 0,
-    publishedDate: '',
-    textSnippet: '',
-    description: '',
-    language: '',
-    previewLink: '',
-    subtitle: '',
-    publisher: '',
-    buyLink: '',
-    retailPrice: 0,
-    currencyCode: ''
-  }
 
   constructor(private bookService: BookService){}
 
